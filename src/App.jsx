@@ -1,12 +1,20 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Component/Home/Home';
+import Navbar from './Component/Header&Footer/Navbar';
+import About from './Component/About/About';
+import Collection from './Component/Collection/Collection';
+import Contact from './Component/Contact/Contact';
 
 const App = () => {
   return (
-    <div>
+    <div className='container'>
+      <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/about' element={<About/>}/>
+        <Route path='/collection' element={<Collection/>}/>
+        <Route path='/contact' element={<Contact/>}/>
       </Routes>
     </div>
   );
