@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {assets} from '../../assets/frontend_assets/assets'
 import { Link, NavLink } from 'react-router-dom';
 const Navbar = () => {
+    const [togle , settogle] = useState(false)
     return (
         <div className='flex justify-between items-center py-5'>
             <NavLink to={'/'}><img src={assets.logo} alt="" className='h-12 '/></NavLink>
 
-            <ul className='flex gap-7 font-semibold text-[14px] text-gray-800'>
+            <ul className='hidden  md:flex gap-7 font-semibold text-[14px] text-gray-800'>
                 <NavLink to={'/'} className='flex flex-col items-center '>
                     <p>Home </p>
                     <hr className='w-7 border-0 bg-gray-400 h-0.5 rounded-xl hidden'/>
@@ -38,10 +39,38 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <Link to={'/'}>
-                    <img src={assets.cart_icon} alt="" className='w-7 h-7' />
+                <Link to={'/'} className='relative'>
+                    <img src={assets.cart_icon} alt="" className='w-6 h-6' />
+                    <p className='bg-black text-white p-0.5 text-center rounded-full text-[8px] absolute top-4 right-0'>10</p>
                 </Link>
+                <img onClick={()=>settogle(true)} className='sm:hidden w-7 h-7  ' src={assets.menu_icon} alt="" />
+                
             </div>
+
+
+            {/* SMOLL DEVICE */}
+
+            <div className={`absolute right-0 top-0 bottom-0  overflow-hidden transition-all bg-white font-semibold pl-10 text-[14px] text-gray-800  ${ togle ? 'w-full' : 'w-0'}`}>
+                <div onClick={()=>settogle(false)} className='flex gap-2 items-center'>
+                    <img src={assets.dropdown_icon} alt="" className='w-4 h-4 '/>
+                    <p>Back </p>
+                </div>
+
+                <NavLink to={'/'} className=' cursor-pointer py-2   '>
+                    <p>HOME </p>                   
+                </NavLink>
+                <NavLink to={'/collection'} className=' cursor-pointer py-2   '>
+                    <p>COLLECTION </p>                   
+                </NavLink>
+                <NavLink to={'about'} className=' cursor-pointer py-2    '>
+                    <p>ABOUT </p>                   
+                </NavLink>
+                <NavLink to={'/contact'} className=' cursor-pointer py-2   '>
+                    <p>CONTACT </p>                   
+                </NavLink>
+
+            </div>
+            
         </div>
     );
 };
