@@ -1,13 +1,21 @@
 import React, { createContext } from 'react';
-export const data = createContext()
-const Contaxt = ({props}) => {
-    const value ={
+import { products } from '../../assets/frontend_assets/assets';
+export const Data = createContext()
 
+const Contaxt = (props) => {
+
+    const currency = '$'
+    const delivery_fee = 10
+    const value ={
+    products,
+    currency,
+    delivery_fee
     }
+    
     return (
-        <data.Provider value={value}>
+        <Data.Provider value={value}>
             {props.children}
-        </data.Provider>
+        </Data.Provider>
     );
 };
 

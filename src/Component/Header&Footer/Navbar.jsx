@@ -29,6 +29,10 @@ const Navbar = () => {
 
             <div className='flex gap-7 '>
                 <img src={assets.search_icon} alt="" className='w-7 h-7'/>
+                 <Link to={'/'} className='relative'>
+                    <img src={assets.cart_icon} alt="" className='w-6 h-6' />
+                    <p className='bg-black text-white p-0.5 text-center rounded-full text-[8px] absolute top-4 right-0'>10</p>
+                </Link>
                 <div className='group relative'>
                     <img src={assets.profile_icon} alt="" className='w-7 h-7' />
 
@@ -39,10 +43,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <Link to={'/'} className='relative'>
-                    <img src={assets.cart_icon} alt="" className='w-6 h-6' />
-                    <p className='bg-black text-white p-0.5 text-center rounded-full text-[8px] absolute top-4 right-0'>10</p>
-                </Link>
+               
                 <img onClick={()=>settogle(true)} className='sm:hidden w-7 h-7' src={assets.menu_icon} 
                 alt=""/>
                 
