@@ -11,7 +11,6 @@ const AllPruduct = () => {
   useEffect(() => {
     setvalue(products.slice(0, 10));
   }, []);
-  console.log(value);
   return (
     <div>
       <Title
