@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
 
 const Collection = () => {
   return (
-    <div>
-      this is collection
+    <div className="container ">
+      <div>
+        <h3>Filter </h3>
+        <div>
+          <input type="text" name="" id="" />
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Collection
+export default Collection;
