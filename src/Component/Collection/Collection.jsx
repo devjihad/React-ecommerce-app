@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {assets} from '../../assets/frontend_assets/assets'
+import Title from '../Home/Title'
+import Product from '../Home/Product'
+import { Data } from "../Contaxt/Contaxt";
 const Collection = () => {
+  const {products} =useContext(Data)
   const [togle, settogle] =useState(false)
+  const [filter , setfilter]= useState([])
+
+  useContext(()=>{
+      setfilter(products)
+  },[])
+  console.log(filter)
   return (
     <div className="container flex flex-col sm:flex-row gap-8 ">
-      <div className="min-w-60">
+      {/* left side  */}
+      <div className="min-w-60 ">
         <h3 onClick={()=>settogle(!togle)} className="text-xl font-semibold flex items-center gap-1 ">Filter <img src={assets.dropdown_icon} alt="" className={`h-3 sm:hidden ${togle ? 'rotate-90' : ''}`}/></h3>
         <div className={`border border-gray-300 py-5 px-3 mt-6  ${togle ? '' : 'hidden'} sm:block`}>
           <p className="text-sm font-semibold mb-3">CATEGORYS</p>
@@ -35,6 +46,31 @@ const Collection = () => {
             </p>
           </div>
         </div>
+      </div>
+      {/* Right side */}
+
+      <div className="flex-1">
+       
+
+        <div className="flex justify-between text-base  mb-2">
+             <Title value1={'ALL'} value2={'COLLECTION'}></Title>
+             <select className=" px-3 outline-0 h-8 font-semibold border-2 border-gray-300 ">
+              <option value="relevent">Sort by : Relevent</option>
+              <option value="low-high">Sort by : Low to High</option>
+              <option value="high-low">Sort by : High to low</option>
+             </select>
+        </div>
+
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 gap-y-5">
+          {
+            products.map((item, index)=>(
+              <Product key={index} name={item.name} image={item.image[0]} id={item._id} price={item.price} />
+             
+            ))
+          }
+        </div>
+
       </div>
     </div>
   );
