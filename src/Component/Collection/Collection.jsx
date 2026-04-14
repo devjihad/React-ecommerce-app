@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {assets} from '../../assets/frontend_assets/assets'
 import Title from '../Home/Title'
 import Product from '../Home/Product'
@@ -6,12 +6,36 @@ import { Data } from "../Contaxt/Contaxt";
 const Collection = () => {
   const {products} =useContext(Data)
   const [togle, settogle] =useState(false)
-  const [filter , setfilter]= useState([])
+  const [category, setcategory] = useState([])
+  const [subcategory, setsubcategory] = useState([])
+  const [show , setshow] = useState([])
 
-  useContext(()=>{
-      setfilter(products)
-  },[])
-  console.log(filter)
+  const categoryvalue=(e)=>{
+    if(category.includes(e.target.value)) {
+      setcategory(prev => prev.filter(item=> item !== e.target.value))
+    }
+    else{
+      setcategory(prev => [...prev,e.target.value])
+    }
+  }
+
+
+  const filterapply = () =>{
+    let filterproduct = products.slice()
+    if(category.length>0 ){
+      filterproduct = filterproduct.filter( item => category.includes(item.category))
+    }
+
+    setshow(filterproduct)
+
+
+  }
+
+  useEffect(()=>{
+    filterapply()
+  },[category , subcategory])
+
+ 
   return (
     <div className="container flex flex-col sm:flex-row gap-8 ">
       {/* left side  */}
@@ -21,13 +45,13 @@ const Collection = () => {
           <p className="text-sm font-semibold mb-3">CATEGORYS</p>
           <div className="text-sm text-gray-700">
             <p className="flex gap-2 items-center">
-              <input type="checkbox" name="" id="" value={'Men'} />Men
+              <input type="checkbox" name="" id="" value={'Men'} onChange={categoryvalue} />Men
             </p>
             <p className="flex gap-2 items-center">
-              <input type="checkbox" name="" id="" value={'Women'} />Women
+              <input type="checkbox" name="" id="" value={'Women'}  onChange={categoryvalue}/>Women
             </p>
             <p className="flex gap-2 items-center">
-              <input type="checkbox" name="" id="" value={'Kids'} />Kids
+              <input type="checkbox" name="" id="" value={'Kids'} onChange={categoryvalue} />Kids
             </p>
           </div>
         </div>
@@ -64,7 +88,7 @@ const Collection = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 gap-y-5">
           {
-            products.map((item, index)=>(
+            show.map((item, index)=>(
               <Product key={index} name={item.name} image={item.image[0]} id={item._id} price={item.price} />
              
             ))
