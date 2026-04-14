@@ -9,7 +9,7 @@ const Collection = () => {
   const [category, setcategory] = useState([])
   const [subcategory, setsubcategory] = useState([])
   const [show , setshow] = useState([])
-
+  // CATEGORY FILTER
   const categoryvalue=(e)=>{
     if(category.includes(e.target.value)) {
       setcategory(prev => prev.filter(item=> item !== e.target.value))
@@ -19,13 +19,28 @@ const Collection = () => {
     }
   }
 
+  // SUBCATEGORY FILTER
+
+  const subcategoryvalue =(e)=>{
+    if(subcategory.includes(e.target.value)){
+      setsubcategory(prev => prev.filter(item => item !== e.target.value))
+    }
+
+    else{
+      setsubcategory(prev => [...prev, e.target.value])
+    }
+  }
+
 
   const filterapply = () =>{
     let filterproduct = products.slice()
     if(category.length>0 ){
       filterproduct = filterproduct.filter( item => category.includes(item.category))
     }
-
+     
+    if(subcategory.length ){
+      filterproduct = filterproduct.filter(item => subcategory.includes(item.subCategory))
+    }
     setshow(filterproduct)
 
 
@@ -34,6 +49,7 @@ const Collection = () => {
   useEffect(()=>{
     filterapply()
   },[category , subcategory])
+ 
 
  
   return (
@@ -60,13 +76,13 @@ const Collection = () => {
           <p className="text-sm font-semibold mb-3">Type</p>
           <div className="text-sm text-gray-700">
             <p className="flex gap-2 items-center">
-              <input type="checkbox" name="" id="" value={'Topwear'} />Topwear
+              <input type="checkbox" name="" id="" value={'Topwear'} onChange={subcategoryvalue}/>Topwear
             </p>
             <p className="flex gap-2 items-center">
-              <input type="checkbox" name="" id="" value={'Bottomwear'} />Bottomwear
+              <input type="checkbox" name="" id="" value={'Bottomwear'} onChange={subcategoryvalue} />Bottomwear
             </p>
             <p className="flex gap-2 items-center">
-              <input type="checkbox" name="" id="" value={'Winterwear'} />Winterwear
+              <input type="checkbox" name="" id="" value={'Winterwear'} onChange={subcategoryvalue} />Winterwear
             </p>
           </div>
         </div>
@@ -79,7 +95,7 @@ const Collection = () => {
         <div className="flex justify-between text-base  mb-2">
              <Title value1={'ALL'} value2={'COLLECTION'}></Title>
              <select className=" px-3 outline-0 h-8 font-semibold border-2 border-gray-300 ">
-              <option value="relevent">Sort by : Relevent</option>
+              <option value="relevent" >Sort by : Relevent</option>
               <option value="low-high">Sort by : Low to High</option>
               <option value="high-low">Sort by : High to low</option>
              </select>
