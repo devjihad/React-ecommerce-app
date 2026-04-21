@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {assets} from '../../assets/frontend_assets/assets'
 import { Link, NavLink } from 'react-router-dom';
+import { Data } from '../Contaxt/Contaxt';
 const Navbar = () => {
+    const { showsearch, setshowsearch } = useContext(Data)
     const [togle , settogle] = useState(false)
     return (
         <div className='flex justify-between items-center py-5'>
@@ -28,7 +30,9 @@ const Navbar = () => {
             </ul>
 
             <div className='flex gap-7 '>
-                <img src={assets.search_icon} alt="" className='w-7 h-7'/>
+                {
+                    showsearch? <img src={assets.cross_icon} alt="" className='w-7 h-7' onClick={()=>setshowsearch(false)}/>:<img src={assets.search_icon} alt="" className='w-7 h-7' onClick={()=>setshowsearch(true)}/>
+                }
                  <Link to={'/'} className='relative'>
                     <img src={assets.cart_icon} alt="" className='w-6 h-6' />
                     <p className='bg-black text-white p-0.5 text-center rounded-full text-[8px] absolute top-4 right-0'>10</p>

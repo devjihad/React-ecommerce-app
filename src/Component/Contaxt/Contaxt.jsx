@@ -7,7 +7,7 @@ const Contaxt = (props) => {
     const currency = '$'
     const delivery_fee = 10
     const [search , setsearch] =useState('')
-    const [showsearch , setshowsearch] = useState(true)
+    const [showsearch , setshowsearch] = useState(false)
     const value ={
     products,
     currency,
