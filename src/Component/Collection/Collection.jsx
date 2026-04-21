@@ -4,7 +4,7 @@ import Title from '../Home/Title'
 import Product from '../Home/Product'
 import { Data } from "../Contaxt/Contaxt";
 const Collection = () => {
-  const {products, setshowsearch} =useContext(Data)
+  const {products, showsearch ,search } =useContext(Data)
   const [togle, settogle] =useState(false)
   const [category, setcategory] = useState([])
   const [subcategory, setsubcategory] = useState([])
@@ -35,6 +35,9 @@ const Collection = () => {
   // FILTER APPLY
   const filterapply = () =>{
     let filterproduct = products.slice()
+    if(showsearch && search){
+      filterproduct = filterproduct.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+    }
     if(category.length>0 ){
       filterproduct = filterproduct.filter( item => category.includes(item.category))
     }
@@ -43,8 +46,6 @@ const Collection = () => {
       filterproduct = filterproduct.filter(item => subcategory.includes(item.subCategory))
     }
     setshow(filterproduct)
-
-
   }
    
   const SortProductValue =()=>{
@@ -67,7 +68,7 @@ const Collection = () => {
 
   useEffect(()=>{
     filterapply()
-  },[category , subcategory])
+  },[category , subcategory, search, showsearch])
 
   useEffect(()=>{
     SortProductValue()
