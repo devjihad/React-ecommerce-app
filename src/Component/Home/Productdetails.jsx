@@ -8,6 +8,7 @@ const Productdetails = () => {
     const {id} = useParams()
     const [productdetails, setprodductdetails] =useState(false)
     const [showimage, setshowimage] =useState('')
+    const [size, setsize] = useState('')
     console.log(productdetails)
 
     const showdata =async () =>{
@@ -64,16 +65,21 @@ const Productdetails = () => {
                 <p>(130)</p>
             </div>
             <p className='felx  text-xl font-semibold'> $ {productdetails.price}</p>
-            <p className='text-lg font-semibold text-gray-700 my-3'> {productdetails.description}</p>
+            <p className='text-lg font-medium text-gray-700 my-3'> {productdetails.description}</p>
             <p className='felx  text-xl font-semibold mb-2'>Select Size</p>
             <div className='flex gap-2'>
                 {
                     productdetails.sizes.map((item , index)=>(
-                        <button key={index} className='bg-gray-200 py-2 px-3 rounded-sm '>{item}</button>
+                        <button onClick={()=>setsize(item)} key={index} className={`bg-gray-200 py-2 px-3 rounded-sm ${size === item ? 'border border-zinc-500':''}`}>{item}</button>
                     ))
                 }
             </div>
-
+            <button className='bg-black text-white py-2 px-5 rounded-sm my-5 active:bg-zinc-700'>ADD TO CART </button>
+            
+            <hr className='w-4/5 text-gray-500 outline-0 mb-5'/>
+            <p className='text-[16px] font-medium text-gray-700'>100% Original Product</p>
+            <p className='text-[16px] font-medium text-gray-700'>Cash on delivery is available on this product</p>
+            <p className='text-[16px] font-medium text-gray-700'> Easy return & exchence policy within 7 days</p>
             </div>
         </div>
     ): null
