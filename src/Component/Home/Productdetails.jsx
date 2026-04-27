@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Data } from '../Contaxt/Contaxt';
 import { assets } from '../../assets/frontend_assets/assets';
+import Title from './Title';
 
 const Productdetails = () => {
     const {products } = useContext(Data)
@@ -30,7 +31,8 @@ const Productdetails = () => {
 
 
     return productdetails ? (
-        <div className='container flex gap-5'>
+       <div className=' container'>
+         <div className=' flex gap-5'>
             <div className='w-1/2 flex gap-2'>
                 <div className='w-1/5'>
                 
@@ -46,12 +48,6 @@ const Productdetails = () => {
                 
 
             </div>
-
-
-
-
-
-
             <div className='w-1/2 font-serif'>
             <h2 className='text-4xl font-semibold my-2 '>{productdetails.name}</h2>
             <div className='flex items-center gap-2 my-4'>
@@ -82,6 +78,21 @@ const Productdetails = () => {
             <p className='text-[16px] font-medium text-gray-700'> Easy return & exchence policy within 7 days</p>
             </div>
         </div>
+
+        <div className='mt-16 mb-10'>
+            <div className='flex gap-1'>
+                <button className='border bg-gray-200 py-2 px-3 border-gray-400 rounded-sm'>Description</button>
+                <button className='border bg-gray-200 py-2 px-3 border-gray-400 rounded-sm'>Review</button>
+            </div>
+            <div className='px-4 py-4 border border-gray-300 rounded-lg'>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat quidem consectetur voluptates unde suscipit tempora nihil, ducimus provident a et ipsum molestiae nesciunt quasi eos in quam deleniti alias voluptas.  Fugiat quidem consectetur voluptates unde suscipit tempora nihil, ducimus provident a et ipsum molestiae nesciunt quasi eos in quam deleniti alias voluptas.</p> <br />
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt sunt fugit, sed sint natus officia porro dolor modi quos, hic voluptatibus suscipit quasi totam, ab animi. Est tenetur quo necessitatibus.</p>
+            </div>
+
+        </div>
+
+        <Title value1={'Relevent'} value2={'Products'}/>
+       </div>
     ): null
 };
 
