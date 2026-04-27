@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Data } from '../Contaxt/Contaxt';
 import { assets } from '../../assets/frontend_assets/assets';
 import Title from './Title';
+import ReleventProduct from '../Contaxt/ReleventProduct';
 
 const Productdetails = () => {
     const {products } = useContext(Data)
@@ -92,6 +93,7 @@ const Productdetails = () => {
         </div>
 
         <Title value1={'Relevent'} value2={'Products'}/>
+        <ReleventProduct category={productdetails.category} subcategory={productdetails.subCategory}/>
        </div>
     ): null
 };
