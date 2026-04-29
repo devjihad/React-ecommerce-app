@@ -6,12 +6,12 @@ import Title from './Title';
 import ReleventProduct from '../Contaxt/ReleventProduct';
 
 const Productdetails = () => {
-    const {products } = useContext(Data)
+    const {products ,addtocart} = useContext(Data)
     const {id} = useParams()
     const [productdetails, setprodductdetails] =useState(false)
     const [showimage, setshowimage] =useState('')
     const [size, setsize] = useState('')
-    console.log(productdetails)
+ 
 
     const showdata =async () =>{
         {
@@ -71,7 +71,7 @@ const Productdetails = () => {
                     ))
                 }
             </div>
-            <button className='bg-black text-white py-2 px-5 rounded-sm my-5 active:bg-zinc-700'>ADD TO CART </button>
+            <button onClick={()=>addtocart(productdetails._id, size)} className='bg-black text-white py-2 px-5 rounded-sm my-5 active:bg-zinc-700'>ADD TO CART </button>
             
             <hr className='w-4/5 text-gray-500 outline-0 mb-5'/>
             <p className='text-[16px] font-medium text-gray-700'>100% Original Product</p>

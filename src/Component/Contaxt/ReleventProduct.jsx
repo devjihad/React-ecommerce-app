@@ -6,7 +6,7 @@ import Product from '../Home/Product';
 const ReleventProduct = ({category, subcategory}) => {
     const {products}=  useContext(Data)
     const [filterdata , setfilterdata] = useState([])
-    console.log(filterdata)
+ 
    
 
     useEffect(()=>{
@@ -20,7 +20,7 @@ const ReleventProduct = ({category, subcategory}) => {
 
 
     return (
-        <div className='grid grid-cols-5 gap-3'>
+        <div className='grid grid-cols-5 gap-3 mt-10'>
             {
                 filterdata.map((item, index)=> (
                    <Product key={index} image={item.image[0]} name={item.name} price={item.price} id={item._id}/>

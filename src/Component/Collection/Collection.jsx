@@ -4,7 +4,7 @@ import Title from '../Home/Title'
 import Product from '../Home/Product'
 import { Data } from "../Contaxt/Contaxt";
 const Collection = () => {
-  const {products, showsearch ,search } =useContext(Data)
+  const {products, showsearch ,search,  } =useContext(Data)
   const [togle, settogle] =useState(false)
   const [category, setcategory] = useState([])
   const [subcategory, setsubcategory] = useState([])
