@@ -3,7 +3,7 @@ import {assets} from '../../assets/frontend_assets/assets'
 import { Link, NavLink } from 'react-router-dom';
 import { Data } from '../Contaxt/Contaxt';
 const Navbar = () => {
-    const { showsearch, setshowsearch } = useContext(Data)
+    const { showsearch, setshowsearch, cartcount } = useContext(Data)
     const [togle , settogle] = useState(false)
     return (
         <div className='flex justify-between items-center py-5'>
@@ -35,7 +35,7 @@ const Navbar = () => {
                 }
                  <Link to={'/'} className='relative'>
                     <img src={assets.cart_icon} alt="" className='w-6 h-6' />
-                    <p className='bg-black text-white p-0.5 text-center rounded-full text-[8px] absolute top-4 right-0'>10</p>
+                    <p className='bg-black text-white py-0.5 px-1 text-center rounded-full text-[8px] absolute top-4 right-0'>{cartcount()}</p>
                 </Link>
                 <div className='group relative'>
                     <img src={assets.profile_icon} alt="" className='w-7 h-7' />
