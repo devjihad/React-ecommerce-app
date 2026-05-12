@@ -7,6 +7,7 @@ import Collection from './Component/Collection/Collection';
 import Contact from './Component/Contact/Contact';
 import Search from './Component/Collection/Search';
 import Productdetails from './Component/Home/Productdetails';
+import Cart from './Component/Cart/Cart';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path='/collection' element={<Collection/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/product/:id' element={<Productdetails/>}/>
+        <Route path='/cart' element={<Cart/>}/>
       </Routes>
     </div>
   );

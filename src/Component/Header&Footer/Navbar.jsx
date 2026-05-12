@@ -33,7 +33,7 @@ const Navbar = () => {
                 {
                     showsearch? <img src={assets.cross_icon} alt="" className='w-7 h-7' onClick={()=>setshowsearch(false)}/>:<img src={assets.search_icon} alt="" className='w-7 h-7' onClick={()=>setshowsearch(true)}/>
                 }
-                 <Link to={'/'} className='relative'>
+                 <Link to={'/cart'} className='relative'>
                     <img src={assets.cart_icon} alt="" className='w-6 h-6' />
                     <p className='bg-black text-white py-0.5 px-1 text-center rounded-full text-[8px] absolute top-4 right-0'>{cartcount()}</p>
                 </Link>

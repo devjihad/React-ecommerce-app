@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { products } from '../../assets/frontend_assets/assets';
 import { toast, ToastContainer } from 'react-toastify';
 export const Data = createContext()
