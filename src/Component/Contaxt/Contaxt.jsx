@@ -53,6 +53,31 @@ const Contaxt = (props) => {
      return count
    }
 
+   const remove =(id, size, quantity)=>{
+    let value = structuredClone(cartvalue)
+    value[id][size] = quantity
+    setcartvalue(value)
+
+   }
+
+   const cartPrice = () =>{
+    let amount = 0 
+    for(const items in cartvalue){
+        let iteminfo = products.find((product)=> product._id === items)
+        for(const item in cartvalue[items]){
+            try{
+                if(cartvalue[items][item] > 0){
+                    amount += iteminfo.price * cartvalue[items][item];
+                }
+
+            }catch(error){
+
+            }
+        }
+    }
+    return amount
+   }
+
     const value ={
     products,
     currency,
@@ -63,7 +88,9 @@ const Contaxt = (props) => {
     setshowsearch,
     addtocart,
     cartvalue,
-    cartcount
+    cartcount,
+    remove,
+    cartPrice
     }
     
     return (
