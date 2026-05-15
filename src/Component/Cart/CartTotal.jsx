@@ -5,23 +5,23 @@ import Title from '../Home/Title';
 const CartTotal = () => {
     const {cartPrice} = useContext(Data)
     return (
-        <div>
-            <div>
+        <div className='w-[50%]'>
+            <div className='my-12'>
                 <Title value1={'Cart'} value2={'Total'}/>
             </div>
 
             <div>
-                <div>
+                <div className='flex justify-between text-xl font-semibold items-center py-1 px-3'>
                     <p>Subtotal :</p>
-                    <p>$ {cartPrice}.00</p>
+                    <p>$ {cartPrice()}.00</p>
                 </div>
                 <hr />
-                <div>
+                <div className='flex justify-between text-xl font-semibold items-center py-1 px-3'>
                     <p>Delivery Charge :</p>
                     <p>$ 10.00</p>
                 </div>
                 <hr />
-                <div>
+                <div className='flex justify-between text-xl font-semibold items-center py-1 px-3'>
                     <p>Total :</p>
                     <p>${cartPrice() === 0 ? 0: cartPrice( ) + 10}.00</p>
                 </div>

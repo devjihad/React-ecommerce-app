@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Data } from '../Contaxt/Contaxt';
 import Title from '../Home/Title';
 import { assets } from '../../assets/frontend_assets/assets';
+import CartTotal from './CartTotal';
 
 const Cart = () => {
     const {products, cartvalue, remove, cartcount} = useContext(Data)
@@ -36,7 +37,7 @@ const Cart = () => {
                     const product = products.find((value)=>value._id ===item._id)
                 return(
                    <div key={index} className='flex justify-between items-center border-t border-gray-300 py-1 font-sans'>
-                     <div  className='flex items-start gap-3   '>
+                     <div  className='flex items-start gap-3 col-span-2 w-[40%] '>
                         <img src={product.image[0]} alt=""  className='w-20 h-20'/>
                         <div>
                             <p className='text-lg font-semibold'>{product.name}</p>
@@ -46,12 +47,16 @@ const Cart = () => {
                             </div>
                         </div>
                     </div>
-                    <input onChange={(e)=>e.target.value ==='0' || e.target.value === '' ? null :remove(item._id, item.size, Number(e.target.value)) } type="number" min={1} defaultValue={item.quantity} className='w-16 h-8 border border-gray-400 rounded-lg px-2 ' />
-                    <img onClick={()=> remove( item._id, item.size, 0)} src={assets.bin_icon} alt="" className='mr-5 w-4 h-4 cursor-pointer' />
+                    <input onChange={(e)=>e.target.value ==='0' || e.target.value === '' ? null :remove(item._id, item.size, Number(e.target.value)) } type="number" min={1} defaultValue={item.quantity} className='w-16 h-8 border border-gray-400 rounded-lg px-2' />
+                    <img onClick={()=> remove( item._id, item.size, 0)} src={assets.bin_icon} alt="" className='mr-5 w-4 h-4 cursor-pointer ' />
                    </div>
-                )
+                ) 
                 
                 })}
+            </div>
+
+            <div className='flex justify-end '>
+                <CartTotal />
             </div>
             
         </div>
