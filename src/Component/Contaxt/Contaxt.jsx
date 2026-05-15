@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 import { products } from '../../assets/frontend_assets/assets';
 import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 export const Data = createContext()
 
 const Contaxt = (props) => {
@@ -10,6 +11,7 @@ const Contaxt = (props) => {
     const [search , setsearch] =useState('')
     const [showsearch , setshowsearch] = useState(false)
     const [cartvalue , setcartvalue] = useState({})
+    const navigation = useNavigate()
     const addtocart =async(id , size)=>{
         let cartdata = structuredClone(cartvalue)
 
@@ -90,7 +92,8 @@ const Contaxt = (props) => {
     cartvalue,
     cartcount,
     remove,
-    cartPrice
+    cartPrice,
+    navigation
     }
     
     return (

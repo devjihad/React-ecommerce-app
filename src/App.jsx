@@ -8,6 +8,7 @@ import Contact from './Component/Contact/Contact';
 import Search from './Component/Collection/Search';
 import Productdetails from './Component/Home/Productdetails';
 import Cart from './Component/Cart/Cart';
+import PlaceOrder from './Component/Cart/PlaceOrder';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/product/:id' element={<Productdetails/>}/>
         <Route path='/cart' element={<Cart/>}/>
+        <Route path='/placeorder' element={<PlaceOrder/>}/>
       </Routes>
     </div>
   );
